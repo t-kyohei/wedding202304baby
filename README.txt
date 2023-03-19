@@ -1,30 +1,62 @@
-Phantom by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+
+TITLE: 
+Wedding - 100% Fully Responsive Free HTML5 Bootstrap Template
+
+AUTHOR:
+DESIGNED & DEVELOPED by GetTemplates.co
+
+Website: http://gettemplates.co/
+Twitter: http://twitter.com/gettemplatesco
+Facebook: http://facebook.com/gettemplatesco
 
 
-This is Phantom, a simple design built around a grid of large, colorful, semi-interactive
-image tiles (of which you can have as many or as few as you like). Makes use of some
-SVG and animation techniques I've been experimenting with on that other project of mine
-you may have heard about (https://carrd.co), and includes a handy generic page for whatever.
+CREDITS:
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+Bootstrap
+http://getbootstrap.com/
 
-(* = not included)
+jQuery
+http://jquery.com/
 
-AJ
-aj@lkn.io | @ajlkn
+jQuery Easing
+http://gsgd.co.uk/sandbox/jquery/easing/
 
+Modernizr
+http://modernizr.com/
 
-Credits:
+Google Fonts
+https://www.google.com/fonts/
 
-	Demo Images:
-		Unsplash (unsplash.com)
+Google Map
+http://maps.google.com/
 
-	Icons:
-		Font Awesome (fontawesome.io)
+Icomoon
+https://icomoon.io/app/
 
-	Other:
-		jQuery (jquery.com)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
+Respond JS
+https://github.com/scottjehl/Respond/blob/master/LICENSE-MIT
+
+animate.css
+http://daneden.me/animate
+
+jQuery Waypoint
+https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
+
+Owl Carousel
+http://www.owlcarousel.owlgraphic.com/
+
+jQuery countTo
+http://www.owlcarousel.owlgraphic.com/
+
+Stellar Parallax
+http://markdalgleish.com/projects/stellar.js/
+
+Magnific Popup
+http://dimsemenov.com/plugins/magnific-popup/
+
+SimplyCountDown JS
+http://vincentloy.github.io/simplyCountdown.js/
+
+Demo Images:
+http://unsplash.com
+
