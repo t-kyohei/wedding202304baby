@@ -115,9 +115,9 @@
      */
     simplyCountdown = function (elt, args) {
         var parameters = extend({
-                year: 2015,
-                month: 6,
-                day: 28,
+                year: 2023,
+                month: 11,
+                day: 11,
                 hours: 0,
                 minutes: 0,
                 seconds: 0,
@@ -134,7 +134,7 @@
                 onEnd: function () {
                     return;
                 },
-                refresh: 1000,
+                refresh: 1,
                 inlineClass: 'simply-countdown-inline',
                 sectionClass: 'simply-section',
                 amountClass: 'simply-amount',
