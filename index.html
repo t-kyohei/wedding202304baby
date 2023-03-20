@@ -141,10 +141,10 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block" style="background: #FF0000;color: #FFFFFF;">赤を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop red" style="background: #FF0000;color: #FFFFFF;">赤を選ぶ</button>
 					</div>
 					
-					<div class="desc-groom">
+					<div class="">
 						<h3></h3>
 						<p>選択肢　青</p>
 					</div>
@@ -156,10 +156,10 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block" style="background: #0000FF;color: #FFFFFF;">青を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop blue" style="background: #0000FF;color: #FFFFFF;">青を選ぶ</button>
 					</div>
 					
-					<div class="desc-groom">
+					<div class="">
 						<h3></h3>
 						<p>選択肢　緑</p>
 					</div>
@@ -171,10 +171,10 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block" style="background: #008000;color: #FFFFFF;">緑を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop green" style="background: #00FF00;color: #FFFFFF;">緑を選ぶ</button>
 					</div>
 					
-					<div class="desc-groom">
+					<div class="">
 						<h3></h3>
 						<p>選択肢　黄</p>
 					</div>
@@ -186,7 +186,7 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block" style="background: #FFFF00;">黄を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop yellow" style="background: #FFFF00;">黄を選ぶ</button>
 					</div>
 					
 				</div>
@@ -349,12 +349,14 @@
 			</div>
 		</div>
 	</div>
-	<button class="show_pop">ポップアップ表示</button>
+
+<!--ポップアップ-->
 
 <div class="modal_pop">
 　<div class="bg js-modal-close"></div>
   <div class="modal_pop_main">
-    <img src="img/popUp.png">
+  	<p class="text text-close">合図があったらかざしてください</p>
+    <button type="submit" class="btn btn-close">✕とじる</button>
   </div>
 </div>
 
@@ -368,31 +370,87 @@
     z-index:9997!important;
 }
 .bg{
-    background-color: #1119;
+
     width: 100%;
     height: 100%;
-    //position:fixed;
+    position:fixed;
+    top: 0;
     z-index:9998!important;
 }
-.modal_pop img{
-    height:80vh;
+
+.bg_red{
+	background-color: #FF0000;
+}
+
+.bg_blue{ 
+	background-color: #0000FF;
+}
+
+.bg_green{
+	background-color: #00FF00;
+}
+
+.bg_yellow{
+	background-color: #FFFF00;
+}
+
+.modal_pop .btn{
+    height:10;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 70%;
     transform: translate(-50%, -50%);
     z-index:9999!important;
 }
+
+.modal_pop .text{
+    height:10;
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    font-size:30px;
+    transform: translate(-50%, -50%);
+    z-index:9999!important;
+}
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script>
  $('.modal_pop').hide();
+ 
  $('.show_pop').on('click',function(){
+ 	if ($(this).hasClass('red')) {
+    	$('.js-modal-close').addClass('bg_red');
+  	}else if($(this).hasClass('blue')) {
+    	$('.js-modal-close').addClass('bg_blue');
+  	}else if($(this).hasClass('green')) {
+    	$('.js-modal-close').addClass('bg_green');
+  	}else if($(this).hasClass('yellow')) {
+    	$('.js-modal-close').addClass('bg_yellow');
+  	}
+ 	
      $('.modal_pop').fadeIn();
+     
  })
+ 
+ 
+ 
+ 
+ 
+ 
  $('.js-modal-close').on('click',function(){
      $('.modal_pop').fadeOut();
  })
+ $('.btn-close').on('click',function(){
+     $('.modal_pop').fadeOut();
+ })
+ $('.text-close').on('click',function(){
+     $('.modal_pop').fadeOut();
+ })
+ 
+ 
 </script>
 
 	<footer id="fh5co-footer" role="contentinfo">
