@@ -237,8 +237,84 @@
 //謎回答
 
  $('.btn-answer').on('click',function(){
-    var test = $('.question1').val();
- 	alert(test);
+    var answerfailed=false;
+    var answernone=false;
+    var answersuccess1=true;
+    var answersuccess2=true;
+    
+    var q1 = $('.question1').val();
+    var q2 = $('.question2').val();
+    var q3 = $('.question3').val();
+    var q41 = $('.question4-1').val();
+    var q42 = $('.question4-2').val();
+    
+    //1問目
+    if(q1=='婚約'||q1=='コンヤク'||q1=='こんやく'){
+      
+    }else if(q1==''){
+      answernone=true;
+      answersuccess1=false;
+      answersuccess2=false;
+    }else{
+      answerfailed=true;
+      answersuccess1=false;
+      answersuccess2=false;    
+    }
+
+    //2問目
+    if(q2=='プリンス'||q2=='ぷりんす'){
+      
+    }else if(q2==''){
+      answernone=true;
+      answersuccess1=false;
+      answersuccess2=false;
+    }else{
+      answerfailed=true;
+      answersuccess1=false;
+      answersuccess2=false;    
+    }
+
+    //3問目
+    if(q3=='かへい'||q3=='へいか'||q3=='ヘイカ'||q3=='カヘイ'||q3=='陛下'||q3=='貨幣'){
+      answersuccess2=false;
+    }else if(q3=='ローズ'||q3=='ろーず'){
+       answersuccess1=false;           
+    }else if(q3==''){
+      answernone=true;
+      answersuccess1=false;
+      answersuccess2=false;
+    }else{
+      answerfailed=true;
+      answersuccess1=false;
+      answersuccess2=false;    
+    }
+
+
+    //4問目
+    if((q41=='スバコ'&&q42=='タカラバコ')||(q41=='タカラバコ'&&q42=='スバコ')){
+
+    }else if(q41==''||q42==''){
+      answernone=true;
+      answersuccess1=false;
+      answersuccess2=false;
+    }else{
+      answerfailed=true;
+      answersuccess1=false;
+      answersuccess2=false;    
+    }
+    
+    
+    if(answersuccess1){
+    alert("正解1");    
+    }else if(answersuccess2){
+    alert("正解2");        
+    }else if(answernone){
+    alert("空欄あり");        
+    }else if(answerfailed){
+    alert("間違いあり");        
+    }
+
+
  	
  	
      
