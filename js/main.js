@@ -230,3 +230,24 @@
 
 
 }());
+
+
+
+
+//謎回答
+
+ $('.btn-answer').on('click',function(){
+    var test = $('.question1').val();
+ 	alert(test);
+ 	
+ 	
+     
+ })
+
+
+
+
+
+//ヒント
+
+

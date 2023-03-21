@@ -108,9 +108,9 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Kyohei &amp; Asuka</h1>
-							<h2>2023.4.22</h2>
-							<h2>Welcome to our wedding reception!</h2>
+							<h1 style="font-size:55px;">Kyohei &amp; Asuka</h1>
+							<h2 style="font-size:35px;">2023.4.22</h2>
+							<h2 style="font-size:25px;">Welcome to our wedding reception!</h2>
 						</div>
 					</div>
 				</div>
@@ -154,7 +154,7 @@
 					<div class="groom">
 					<div class="img-responsive">
 						<img src="images/kyohei2.jpg" alt="groom" class="img-res">
-						<img src="images/asuka.jpg" alt="groom" class="img-res">
+						<img src="images/asuka2.jpg" alt="groom" class="img-res">
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
@@ -168,8 +168,8 @@
 					
 					<div class="groom">
 					<div class="img-responsive">
-						<img src="images/kyohei2.jpg" alt="groom" class="img-res">
-						<img src="images/asuka.jpg" alt="groom" class="img-res">
+						<img src="images/kyohei.jpg" alt="groom" class="img-res">
+						<img src="images/asuka2.jpg" alt="groom" class="img-res">
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
@@ -183,7 +183,7 @@
 					
 					<div class="groom">
 					<div class="img-responsive">
-						<img src="images/kyohei.jpg" alt="groom" class="img-res">
+						<img src="images/kyohei2.jpg" alt="groom" class="img-res">
 						<img src="images/asuka.jpg" alt="groom" class="img-res">
 					</div>
 					</div>
@@ -211,7 +211,7 @@
 						<div class="col-md-10 col-md-offset-1">
 							<div class="col-md-6 col-sm-6 text-center">
 								<div class="event-wrap animate-box">
-									<h3>あらすじ</h3>
+									<h3>プロローグ</h3>
 									<div class="event-col">
 										<i class="icon-clock"></i>
 										<span>4:00 PM</span>
@@ -237,23 +237,27 @@
 									</div>
 									<br>
 									<p>4つの問題の答えを入力せよ</p>
+									<p style="color:#FF0000;">何か間違えています</p>
+									<p style="color:#FF0000;">入力されていない回答があります</p>
 									<div class="form-group">
 										<label for="question1" class="sr-only">１問目</label>
-										<input type="" class="form-control" id="question1" placeholder="１問目">
+										<input type="" class="form-control question1" style="color:#FFFFFF;" id="question1" placeholder="１問目">
 									</div>
 									<div class="form-group">
 										<label for="question2" class="sr-only">２問目</label>
-										<input type="" class="form-control" id="question2" placeholder="２問目">
+										<input type="" class="form-control question2" id="question2" style="color:#FFFFFF;" placeholder="２問目">
 									</div>
 									<div class="form-group">
 										<label for="question3" class="sr-only">３問目</label>
-										<input type="" class="form-control" id="question3" placeholder="３問目">
+										<input type="" class="form-control question3" id="question3" style="color:#FFFFFF;" placeholder="３問目">
 									</div>
 									<div class="form-group">
-										<label for="question4" class="sr-only">４問目</label>
-										<input type="" class="form-control" id="question4" placeholder="４問目">
+										<label for="question4" class="sr-only">４問目①</label>
+										<input type="" class="form-control question4-1" id="question4" style="color:#FFFFFF;" placeholder="４問目①">
+										<label for="question4" class="sr-only">４問目②</label>
+										<input type="" class="form-control question4-2" id="question4" style="color:#FFFFFF;" placeholder="４問目②">
 									</div>
-									<button type="submit" class="btn btn-default btn-block">回答送信</button>
+									<button type="submit" class="btn btn-default btn-block btn-answer">回答送信</button>
 									
 								</div>
 							</div>
@@ -420,6 +424,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
+
+
+//色回答
  $('.modal_pop').hide();
  
  $('.show_pop').on('click',function(){
@@ -437,11 +444,6 @@
      
  })
  
- 
- 
- 
- 
- 
  $('.js-modal-close').on('click',function(){
      $('.modal_pop').fadeOut();
  })
@@ -451,6 +453,13 @@
  $('.text-close').on('click',function(){
      $('.modal_pop').fadeOut();
  })
+ 
+
+
+//謎回答
+
+
+ 
  
  
 </script>

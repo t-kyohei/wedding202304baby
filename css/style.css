@@ -10,6 +10,18 @@
 * 	Template Style 
 *
 * ======================================================= */
+
+//色回答
+
+
+//回答送信エリア
+.question{
+color : #FFFFFF!important;
+}
+
+//ヒント
+
+
 body {
   //font-family: "Work Sans", Arial, sans-sans-serif;
   font-weight: 400;
@@ -19,6 +31,19 @@ body {
   background: #fff;
 }
 
+p{
+
+  font-size: 20px !important;
+
+}
+
+button{
+
+  font-size: 30px !important;
+  font-weight : 700 !important;
+  font-family:"メイリオ"!important;
+
+}
 #page {
   position: relative;
   overflow-x: hidden;
