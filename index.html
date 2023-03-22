@@ -363,12 +363,20 @@
 　<div class="bg js-modal-close"></div>
   <div class="modal_pop_main">
   	<p class="text text-close">合図があったらかざしてください</p>
-    <button type="submit" class="btn btn-close">✕とじる</button>
+   <button type="submit" class="btn btn-close">✕とじる</button>
+  </div>
+</div>
+
+
+<div class="modal_pop_before">
+　<div class="bg bg_before"></div>
+  <div class="modal_pop_main_before">
+	<img src="images/loader3.gif" style="display: block; position: absolute; top: 50%; left:40%; width:100px; height:100px">
   </div>
 </div>
 
 <style>
-.modal_pop{
+.modal_pop {
     width: 100vw;
     height: 100vh;
     position:fixed;
@@ -376,6 +384,17 @@
     left:0;
     z-index:9997!important;
 }
+
+.modal_pop_before{
+    width: 100vw;
+    height: 100vh;
+    position:fixed;
+    top: 0;
+    left:0;
+    z-index:9997!important;
+}
+
+
 .bg{
 	//background-color: #1119;
     width: 100%;
@@ -383,6 +402,10 @@
     position:fixed;
     top: 0;
     z-index:9998!important;
+}
+
+.bg_before{
+    background-color: #1119;
 }
 
 .bg_red{
@@ -429,6 +452,7 @@
 
 //色回答
  $('.modal_pop').hide();
+ $('.modal_pop_before').hide();
  
  $('.show_pop').on('click',function(){
  	if ($(this).hasClass('red')) {
@@ -440,20 +464,40 @@
   	}else if($(this).hasClass('yellow')) {
     	$('.js-modal-close').addClass('bg_yellow');
   	}
- 	
-     $('.modal_pop').fadeIn();
+
+          $('.modal_pop_before').fadeIn();
+  	
+  	
+ 	 const endpoint ="https://script.google.com/macros/s/AKfycbzD7HUiRp-ULYGhMVE6Z5RLXiYqVoEGfsDvTz7naDC0pb3BDwStmz5CVVHtYTiVqqnUpQ/exec";
+        "★WebAPIのURL★";
+        fetch(endpoint)
+		.then(function (fetch_data) {
+  		return fetch_data.json();
+		})
+		.then(function (json) {
+    		if(json[0].timeup==0){
+				$('.modal_pop_before').fadeOut();
+    		     $('.modal_pop').fadeIn();
+    		}else{
+    			
+    		}
+		});
+
      
  })
  
- $('.js-modal-close').on('click',function(){
-     $('.modal_pop').fadeOut();
- })
+ //$('.js-modal-close').on('click',function(){
+ //    $('.modal_pop').fadeOut();
+ //    $('.js-modal-close').removeClass('bg_red bg_blue bg_green bg_yellow');
+ //})
  $('.btn-close').on('click',function(){
      $('.modal_pop').fadeOut();
+     $('.js-modal-close').removeClass('bg_red bg_blue bg_green bg_yellow');     
  })
- $('.text-close').on('click',function(){
-     $('.modal_pop').fadeOut();
- })
+// $('.text-close').on('click',function(){
+//     $('.modal_pop').fadeOut();
+//     $('.js-modal-close').removeClass('bg_red bg_blue bg_green bg_yellow');
+// })
  
 
 

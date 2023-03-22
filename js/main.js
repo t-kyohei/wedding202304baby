@@ -313,16 +313,29 @@
     }else if(answerfailed){
     alert("間違いあり");        
     }
-
-
- 	
- 	
      
  })
 
 
-
-
+function getgoogle(type){
+    //GASのAPIのURL（各自変更してください。）
+    const endpoint ="https://script.google.com/macros/s/AKfycbzD7HUiRp-ULYGhMVE6Z5RLXiYqVoEGfsDvTz7naDC0pb3BDwStmz5CVVHtYTiVqqnUpQ/exec";
+        "★WebAPIのURL★";
+        fetch(endpoint)
+		.then(function (fetch_data) {
+  		return fetch_data.json();
+		})
+		.then(function (json) {
+  		for (var i in json) {
+    		console.log(json[i].timeup);
+    		console.log(json[i].answer);
+  		}
+		});
+		
+		return json[0].timeup;
+		
+}
+        
 
 //ヒント
 
