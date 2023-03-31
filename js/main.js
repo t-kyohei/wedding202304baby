@@ -400,7 +400,7 @@ function getgoogle(type){
             event.target.style.left = (touch.pageX - window.pageXOffset - draggedElem.offsetWidth / 2) + "px";
         }
 
-        function touchEndEvent(event) {
+        function touchEndEvent1(event) {
             event.preventDefault();
 
             // ドラッグ中の操作のために変更していたスタイルを元に戻す
@@ -413,17 +413,27 @@ function getgoogle(type){
             var touch = event.changedTouches[0];
             // スクロール分を加味した座標に存在するエレメントを新しい親とする
             var newParentElem = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset);
-            if(newParentElem.id == "tota"){
-               alert("こいつは狼だ！");
-               localStorage.setItem('finish', "OK");
-                window.location.href = './next/'; 
-               
-            }else if(newParentElem.id == "tanu"){
-               alert("食べちゃダメ！");
-               
-               
-            }else if(newParentElem.id == "shizu"){
-               alert("食べちゃダメ！");
+            if(newParentElem.id == "move-clock2"){
+               alert("お見事！！");
+            }
+
+        }
+        
+        function touchEndEvent2(event) {
+            event.preventDefault();
+
+            // ドラッグ中の操作のために変更していたスタイルを元に戻す
+            var droppedElem = event.target;
+            droppedElem.style.position = "";
+            event.target.style.top = "";
+            event.target.style.left = "";
+
+            // ドロップした位置にあるドロップ可能なエレメントに親子付けする
+            var touch = event.changedTouches[0];
+            // スクロール分を加味した座標に存在するエレメントを新しい親とする
+            var newParentElem = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset);
+            if(newParentElem.id == "move-clock1"){
+               alert("お見事！！");
             }
 
         }
@@ -433,7 +443,12 @@ function getgoogle(type){
                 var clock1 =  document.getElementById("move-clock1")
                 clock1.addEventListener('touchstart', touchStartEvent, false);
                 clock1.addEventListener('touchmove', touchMoveEvent, false);
-                clock1.addEventListener('touchend', touchEndEvent, false);
+                clock1.addEventListener('touchend', touchEndEvent1, false);
+        
+                var clock2 =  document.getElementById("move-clock2")
+                clock2.addEventListener('touchstart', touchStartEvent, false);
+                clock2.addEventListener('touchmove', touchMoveEvent, false);
+                clock2.addEventListener('touchend', touchEndEvent2, false);
         
 
 
