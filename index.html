@@ -86,14 +86,16 @@
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
+						<li class="active"><a href="index.html">TOP</a></li>
 						<li><a href="index.html#baby">赤ちゃん回答</a></li>
-						<li><a href="#fh5co-couple">謎解き回答</a></li>
-						<li><a href="services.html">１問目</a></li>
+						<li><a href="#fh5co-couple">謎解き解答欄</a></li>
+						<li><a href="services.html">謎解き問題</a></li>
 						<li><a href="services.html">２問目</a></li>
 						<li><a href="services.html">３問目</a></li>
 						<li><a href="services.html">４問目</a></li>
-						<li><a href="services.html">ヒント</a></li>
+						<li><a href="services.html">５問目</a></li>
+
+						<li><a href="services.html">解答</a></li>
 					</ul>
 				</div>
 			</div>
@@ -123,8 +125,8 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<h2 id="baby">赤ちゃん顔当て!</h2>
-					<h3>新郎新婦が再入場するまでに回答をしてください</h3>
-					<p>謎を解ければ正解を教えてもらえるかも</p>
+					<h3>謎を解ければ色を選択できるようになります</h3>
+					<p>新郎新婦が再入場するまでに解答をしてください</p>
 					<p>答えが分かってもあまり大声で言わないようお願いします</p>
 					<p>選べるのは1回きりです</p>
 				</div>
@@ -144,7 +146,8 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block show_pop red" style="background: #FF0000;color: #FFFFFF;">赤を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop red" style="color: #FFFFFF;">赤を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block disabled no_show_pop" style="background: #C0C0C0;border: 5px solid #FF0000;color: #FFFFFF;">赤を選ぶ</button>
 					</div>
 					
 					<div class="">
@@ -160,6 +163,7 @@
 					</div>
 					<div class="col-md-4 col-sm-4">
 							<button type="submit" class="btn btn-default btn-block show_pop blue" style="background: #0000FF;color: #FFFFFF;">青を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block disabled no_show_pop" style="background: #C0C0C0;border: 5px solid #0000FF;color: #FFFFFF;">青を選ぶ</button>
 					</div>
 					
 					<div class="">
@@ -175,6 +179,7 @@
 					</div>
 					<div class="col-md-4 col-sm-4">
 							<button type="submit" class="btn btn-default btn-block show_pop green" style="background: #00FF00;color: #FFFFFF;">緑を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block disabled no_show_pop" style="background: #C0C0C0;border: 5px solid #00FF00;color: #FFFFFF;">緑を選ぶ</button>
 					</div>
 					
 					<div class="">
@@ -190,6 +195,7 @@
 					</div>
 					<div class="col-md-4 col-sm-4">
 							<button type="submit" class="btn btn-default btn-block show_pop yellow" style="background: #FFFF00;">黄を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block disabled no_show_pop" style="background: #C0C0C0;border: 5px solid #FFFF00;color: #FFFFFF;">黄を選ぶ</button>
 					</div>
 					
 				</div>
@@ -214,7 +220,7 @@
 								<div class="event-wrap animate-box">
 									<h3>プロローグ</h3>
 									<div class="event-col">
-										<i class="icon-clock"></i>
+										<i class="icon-clock move-clock" id="move-clock1"></i>
 										<span>4:00 PM</span>
 									</div>
 									<div class="event-col">
@@ -229,7 +235,7 @@
 									<h3>謎を解いて正解の色を入手せよ</h3>
 									<p>制限時間</p>
 									<div class="event-col">
-										<i class="icon-clock"></i>
+										<i class="icon-clock move-clock" id="move-clock2"></i>
 										<span>新郎新婦の<br>再入場まで</span>
 									</div>
 									<div class="event-col">
@@ -237,7 +243,7 @@
 										<span>April <br>22</span>
 									</div>
 									<br>
-									<p>4つの問題の答えを入力せよ(カタカナで入力)</p>
+									<p>5つの問題の答えを入力せよ(カタカナで入力)</p>
 									<p class="hide answer-failed" style="color:#FF0000;">何か間違えています</p>
 									<p class="hide answer-none" style="color:#FF0000;">入力されていない回答があります</p>
 									<div class="form-group">
@@ -253,10 +259,15 @@
 										<input type="" class="form-control question3" id="question3" style="color:#FFFFFF;" placeholder="３問目(カタカナ)">
 									</div>
 									<div class="form-group">
-										<label for="question4" class="sr-only">４問目①</label>
-										<input type="" class="form-control question4-1" id="question4" style="color:#FFFFFF;" placeholder="４問目①(カタカナ)">
-										<label for="question4" class="sr-only">４問目②</label>
-										<input type="" class="form-control question4-2" id="question4" style="color:#FFFFFF;" placeholder="４問目②(カタカナ)">
+										<label for="question1" class="sr-only">４問目</label>
+										<input type="" class="form-control question4" style="color:#FFFFFF;" id="question4" placeholder="４問目(カタカナ)">
+									</div>
+
+									<div class="form-group">
+										<label for="question4" class="sr-only">５問目①</label>
+										<input type="" class="form-control question5-1" id="question4" style="color:#FFFFFF;" placeholder="５問目①(カタカナ)">
+										<label for="question4" class="sr-only">５問目②</label>
+										<input type="" class="form-control question5-2" id="question4" style="color:#FFFFFF;" placeholder="５問目②(カタカナ)">
 									</div>
 									<button type="submit" class="btn btn-default btn-block btn-answer">回答送信</button>
 									
@@ -284,14 +295,14 @@
 					<ul id="fh5co-gallery-list">
 						
 						<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/no1.jpg); "> 
-						<a href="images/no1.jpg">
+						<a class="show_image" data-value="1">
 							<div class="case-studies-summary">
 								<h2>１問目</h2>
 							</div>
 						</a>
 					</li>
 					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/no2.jpg); ">
-						<a href="images/no2.jpg" class="color-2">
+						<a class="show_image" data-value="2">
 							<div class="case-studies-summary">
 								<h2>２問目</h2>
 							</div>
@@ -300,16 +311,23 @@
 
 
 					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/no3.jpg); ">
-						<a href="images/no3.jpg" class="color-3">
+						<a class="show_image" data-value="3">
 							<div class="case-studies-summary">
 								<h2>３問目</h2>
 							</div>
 						</a>
 					</li>
 					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/no4.jpg); ">
-						<a href="images/no4.jpg" class="color-4">
+						<a class="show_image color-4" data-value="4">
 							<div class="case-studies-summary">
 								<h2>４問目</h2>
+							</div>
+						</a>
+					</li>
+					<li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(images/no5.jpg); ">
+						<a class="show_image color-4" data-value="5">
+							<div class="case-studies-summary">
+								<h2>５問目</h2>
 							</div>
 						</a>
 					</li>
@@ -329,25 +347,15 @@
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>ヒント</h2>
-					<p>対象の問題のヒントを表示してください</p>
+					<h2>解答</h2>
 				</div>
 			</div>
 			<div class="row animate-box">
 				<div class="col-md-10 col-md-offset-1">
 					<form class="form-inline">
-					
+						<p style="color: #FFFFFF;">制限時間が過ぎるたらこちらから解答を見ることができます</p>
 						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">ヒント１問目</button>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">ヒント２問目</button>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">ヒント３問目</button>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">ヒント４問目</button>
+							<button type="submit" class="btn btn-default btn-block">解答をみる</button>
 						</div>
 					
 					
@@ -375,6 +383,17 @@
   </div>
 </div>
 
+
+<div class="modal_pop_image">
+　<div class="bg bg_image"></div>
+　<div class="col-md-12">
+  <div class="modal_pop_main_image">
+	<img src="images/no1.jpg" class="image" id="qimage">
+  </div>
+  <button type="submit" class="btn btn-close-image">✕とじる</button>
+  </div>
+</div>
+
 <style>
 .modal_pop {
     width: 100vw;
@@ -394,6 +413,15 @@
     z-index:9997!important;
 }
 
+.modal_pop_image{
+    width: 100vw;
+    height: 100vh;
+    position:fixed;
+    top: 0;
+    left:0;
+    z-index:9997!important;
+}
+
 
 .bg{
 	//background-color: #1119;
@@ -402,6 +430,11 @@
     position:fixed;
     top: 0;
     z-index:9998!important;
+}
+
+.bg_image{
+	background-color: #1119;
+
 }
 
 .bg_before{
@@ -443,6 +476,52 @@
     z-index:9999!important;
 }
 
+.modal_pop_image .image{
+    width:96%; 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size:30px;
+    transform: translate(-50%, 50px);
+    z-index:9999!important;
+}
+
+.modal_pop_image .btn{
+    height:10;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, 500px);
+    z-index:9999!important;
+}
+
+.red{
+	background: #FF0000;
+}
+
+.custom-blink {
+  animation: blink-fast .5s linear infinite;
+}
+
+@keyframes blink-fast {
+  0% {
+    background: #FFFFFF;
+  }
+
+  20% {
+    background: #FF0000;
+  }
+
+  80% {
+    background: #FF0000;
+  }
+
+  100% {
+    background: #FFFFFF;
+  }
+}
+
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -453,20 +532,53 @@
 //色回答
  $('.modal_pop').hide();
  $('.modal_pop_before').hide();
+ $('.modal_pop_image').hide();
+ 
+//ローカルストレージ初期登録
+ localStorage.setItem('answer', '');
+ localStorage.setItem('first_answer', '');
+ localStorage.setItem('last_answer', '');
+ 
+ 
+ $('.show_image').on('click',function(){
+    var value = $(this).data('value');
+    var url ='images/no'+value+'.jpg';
+    $('#qimage').attr('src', url);
+    $('.modal_pop_image').fadeIn();
+ })
  
  $('.show_pop').on('click',function(){
+  
+  var answer = localStorage.getItem('answer');
+  
+  if(!$(this).hasClass(answer)&&!answer==''){
+  
+  alert('既に回答済みのため選択できません');
+  }else{
+  
+  var result = true
+  	if(answer==''){
+  		result = confirm('1度選択したら他の色を選ぶことができなくなりますが良いですか？')
+	  }
+  
+  if (result) {
+    // 「OK」をクリックした際の処理を記述
+ 
  	if ($(this).hasClass('red')) {
-    	$('.js-modal-close').addClass('bg_red');
+    	$('.js-modal-close').addClass('red');
+    	localStorage.setItem('answer', 'red');
   	}else if($(this).hasClass('blue')) {
     	$('.js-modal-close').addClass('bg_blue');
+    	localStorage.setItem('answer', 'blue');    	
   	}else if($(this).hasClass('green')) {
     	$('.js-modal-close').addClass('bg_green');
+    	localStorage.setItem('answer', 'green');
   	}else if($(this).hasClass('yellow')) {
     	$('.js-modal-close').addClass('bg_yellow');
+    	localStorage.setItem('answer', 'yellow');    	
   	}
 
-          $('.modal_pop_before').fadeIn();
-  	
+    $('.modal_pop_before').fadeIn();
   	
  	 const endpoint ="https://script.google.com/macros/s/AKfycbzD7HUiRp-ULYGhMVE6Z5RLXiYqVoEGfsDvTz7naDC0pb3BDwStmz5CVVHtYTiVqqnUpQ/exec";
         "★WebAPIのURL★";
@@ -484,7 +596,13 @@
     			
     		}
 		});
+  } else {
+    //キャンセルした場合
+    //何も起きない
+    return false
+  }
 
+}
      
  })
  
@@ -500,7 +618,9 @@
 //     $('.modal_pop').fadeOut();
 //     $('.js-modal-close').removeClass('bg_red bg_blue bg_green bg_yellow');
 // })
- 
+  $('.btn-close-image').on('click',function(){
+     $('.modal_pop_image').fadeOut();
+ })
 
 
 //謎回答

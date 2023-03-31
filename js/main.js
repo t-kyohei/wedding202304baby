@@ -232,6 +232,21 @@
 }());
 
 
+//謎回答欄初期値
+
+var q1 = localStorage.getItem('q1');
+var q2 = localStorage.getItem('q2');
+var q3 = localStorage.getItem('q3');
+var q4 = localStorage.getItem('q4');
+var q51 = localStorage.getItem('q51');
+var q52 = localStorage.getItem('q52');
+
+$('.question1').val(q1);
+$('.question2').val(q2);
+$('.question3').val(q3);
+$('.question4').val(q4);
+$('.question51').val(q51);
+$('.question52').val(q52);
 
 
 //謎回答
@@ -245,11 +260,21 @@
     var q1 = $('.question1').val();
     var q2 = $('.question2').val();
     var q3 = $('.question3').val();
-    var q41 = $('.question4-1').val();
-    var q42 = $('.question4-2').val();
+    var q4 = $('.question4').val();
+    var q51 = $('.question5-1').val();
+    var q52 = $('.question5-2').val();
+    
+    localStorage.setItem('q1', q1);
+    localStorage.setItem('q2', q2);
+    localStorage.setItem('q3', q3);
+    localStorage.setItem('q4', q4);
+    localStorage.setItem('q51', q51);
+    localStorage.setItem('q52', q52);
+
+
     
     //1問目
-    if(q1=='婚約'||q1=='コンヤク'||q1=='こんやく'){
+    if(q1=='カンダ'){
       
     }else if(q1==''){
       answernone=true;
@@ -262,7 +287,7 @@
     }
 
     //2問目
-    if(q2=='プリンス'||q2=='ぷりんす'){
+    if(q2=='コンヤク'){
       
     }else if(q2==''){
       answernone=true;
@@ -275,10 +300,8 @@
     }
 
     //3問目
-    if(q3=='かへい'||q3=='へいか'||q3=='ヘイカ'||q3=='カヘイ'||q3=='陛下'||q3=='貨幣'){
-      answersuccess2=false;
-    }else if(q3=='ローズ'||q3=='ろーず'){
-       answersuccess1=false;           
+	if(q3=='プリンス'){
+      
     }else if(q3==''){
       answernone=true;
       answersuccess1=false;
@@ -289,11 +312,26 @@
       answersuccess2=false;    
     }
 
-
     //4問目
-    if((q41=='スバコ'&&q42=='タカラバコ')||(q41=='タカラバコ'&&q42=='スバコ')){
+    if(q4=='ヘイカ'||q4=='カヘイ'){
+      answersuccess2=false;
+    }else if(q4=='ローズ'){
+       answersuccess1=false;           
+    }else if(q4==''){
+      answernone=true;
+      answersuccess1=false;
+      answersuccess2=false;
+    }else{
+      answerfailed=true;
+      answersuccess1=false;
+      answersuccess2=false;    
+    }
 
-    }else if(q41==''||q42==''){
+
+    //5問目
+    if((q51=='スバコ'&&q52=='タカラバコ')||(q51=='タカラバコ'&&q52=='スバコ')){
+
+    }else if(q51==''||q52==''){
       answernone=true;
       answersuccess1=false;
       answersuccess2=false;
@@ -305,13 +343,21 @@
     
     
     if(answersuccess1){
-    alert("正解1");    
+    alert("正解です！");
+    localStorage.setItem('first_answer', 1);
+    var url ='images/answerd.jpg';
+    $('#qimage').attr('src', url);
+    $('.modal_pop_image').fadeIn();
     }else if(answersuccess2){
-    alert("正解2");        
+    alert("素晴らしい！！");
+    localStorage.setItem('last_answer', 2);
+    var url ='images/answerf.jpg';
+    $('#qimage').attr('src', url);
+    $('.modal_pop_image').fadeIn();        
     }else if(answernone){
-    alert("空欄あり");        
+    alert("全ての答えを入力してください");        
     }else if(answerfailed){
-    alert("間違いあり");        
+    alert("間違っている解答があります");        
     }
      
  })
@@ -337,6 +383,57 @@ function getgoogle(type){
 }
         
 
-//ヒント
+//時計移動
+ function touchStartEvent(event) {
+            // タッチによる画面スクロールを止める
+            event.preventDefault();
+        }
+
+        function touchMoveEvent(event) {
+            event.preventDefault();
+
+            // ドラッグ中のアイテムをカーソルの位置に追従
+            var draggedElem = event.target;
+            var touch = event.changedTouches[0];
+            event.target.style.position = "fixed";
+            event.target.style.top = (touch.pageY - window.pageYOffset - draggedElem.offsetHeight / 2) + "px";
+            event.target.style.left = (touch.pageX - window.pageXOffset - draggedElem.offsetWidth / 2) + "px";
+        }
+
+        function touchEndEvent(event) {
+            event.preventDefault();
+
+            // ドラッグ中の操作のために変更していたスタイルを元に戻す
+            var droppedElem = event.target;
+            droppedElem.style.position = "";
+            event.target.style.top = "";
+            event.target.style.left = "";
+
+            // ドロップした位置にあるドロップ可能なエレメントに親子付けする
+            var touch = event.changedTouches[0];
+            // スクロール分を加味した座標に存在するエレメントを新しい親とする
+            var newParentElem = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset);
+            if(newParentElem.id == "tota"){
+               alert("こいつは狼だ！");
+               localStorage.setItem('finish', "OK");
+                window.location.href = './next/'; 
+               
+            }else if(newParentElem.id == "tanu"){
+               alert("食べちゃダメ！");
+               
+               
+            }else if(newParentElem.id == "shizu"){
+               alert("食べちゃダメ！");
+            }
+
+        }
+
+        
+            // ドラッグ可能アイテムへのタッチイベントの設定
+                var clock1 =  document.getElementById("move-clock1")
+                clock1.addEventListener('touchstart', touchStartEvent, false);
+                clock1.addEventListener('touchmove', touchMoveEvent, false);
+                clock1.addEventListener('touchend', touchEndEvent, false);
+        
 
 
