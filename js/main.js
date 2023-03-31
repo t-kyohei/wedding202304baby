@@ -384,7 +384,7 @@ function getgoogle(type){
         
 
 //時計移動
- function touchStartEvent(event) {
+ 		function touchStartEvent(event) {
             // タッチによる画面スクロールを止める
             event.preventDefault();
         }
