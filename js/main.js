@@ -384,7 +384,7 @@ function getgoogle(type){
         
 
 //時計移動
- 		function touchStartEvent(event) {
+ /*		function touchStartEvent(event) {
             // タッチによる画面スクロールを止める
             event.preventDefault();
         }
@@ -424,9 +424,9 @@ function getgoogle(type){
 
             // ドラッグ中の操作のために変更していたスタイルを元に戻す
             var droppedElem = event.target;
-            droppedElem.style.position = "";
-            event.target.style.top = "";
-            event.target.style.left = "";
+            //droppedElem.style.position = "";
+            //event.target.style.top = "";
+            //event.target.style.left = "";
 
             // ドロップした位置にあるドロップ可能なエレメントに親子付けする
             var touch = event.changedTouches[0];
@@ -440,15 +440,106 @@ function getgoogle(type){
 
         
             // ドラッグ可能アイテムへのタッチイベントの設定
-                var clock1 =  document.getElementById("move-clock1")
+                var clock1 =  document.getElementById("move-clock1");
                 clock1.addEventListener('touchstart', touchStartEvent, false);
                 clock1.addEventListener('touchmove', touchMoveEvent, false);
                 clock1.addEventListener('touchend', touchEndEvent1, false);
         
-                var clock2 =  document.getElementById("move-clock2")
+                var clock2 =  document.getElementById("move-clock2");
                 clock2.addEventListener('touchstart', touchStartEvent, false);
                 clock2.addEventListener('touchmove', touchMoveEvent, false);
                 clock2.addEventListener('touchend', touchEndEvent2, false);
         
+
+*/
+
+(function(){
+
+    //要素の取得
+    var elements = document.getElementsByClassName("move-clock");
+
+    //要素内のクリックされた位置を取得するグローバル（のような）変数
+    var x;
+    var y;
+
+    //マウスが要素内で押されたとき、又はタッチされたとき発火
+    for(var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("mousedown", mdown, false);
+        elements[i].addEventListener("touchstart", mdown, false);
+    }
+
+    //マウスが押された際の関数
+    function mdown(e) {
+
+        //クラス名に .drag を追加
+        this.classList.add("drag");
+
+        //タッチデイベントとマウスのイベントの差異を吸収
+        if(e.type === "mousedown") {
+            var event = e;
+        } else {
+            var event = e.changedTouches[0];
+        }
+
+        //要素内の相対座標を取得
+        x = event.pageX - this.offsetLeft;
+        y = event.pageY - this.offsetTop;
+
+        //ムーブイベントにコールバック
+        document.body.addEventListener("mousemove", mmove, false);
+        document.body.addEventListener("touchmove", mmove, false);
+    }
+
+    //マウスカーソルが動いたときに発火
+    function mmove(e) {
+
+        //ドラッグしている要素を取得
+        var drag = document.getElementsByClassName("drag")[0];
+
+        //同様にマウスとタッチの差異を吸収
+        if(e.type === "mousemove") {
+            var event = e;
+        } else {
+            var event = e.changedTouches[0];
+        }
+
+        //フリックしたときに画面を動かさないようにデフォルト動作を抑制
+        e.preventDefault();
+
+        //マウスが動いた場所に要素を動かす
+        drag.style.top = event.pageY - y + "px";
+        drag.style.left = event.pageX - x + "px";
+
+        //マウスボタンが離されたとき、またはカーソルが外れたとき発火
+        drag.addEventListener("mouseup", mup, false);
+        document.body.addEventListener("mouseleave", mup, false);
+        drag.addEventListener("touchend", mup, false);
+        document.body.addEventListener("touchleave", mup, false);
+
+    }
+
+    //マウスボタンが上がったら発火
+    function mup(e) {
+    
+         // ドロップした位置にあるドロップ可能なエレメントに親子付けする
+        var touch = e.changedTouches[0];
+        // スクロール分を加味した座標に存在するエレメントを新しい親とする
+        var newParentElem = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset);
+		console.log(newParentElem.id);
+		
+		
+        var drag = document.getElementsByClassName("drag")[0];
+
+        //ムーブベントハンドラの消去
+        document.body.removeEventListener("mousemove", mmove, false);
+        drag.removeEventListener("mouseup", mup, false);
+        document.body.removeEventListener("touchmove", mmove, false);
+        drag.removeEventListener("touchend", mup, false);
+
+        //クラス名 .drag も消す
+        drag.classList.remove("drag");
+    }
+
+})()
 
 
