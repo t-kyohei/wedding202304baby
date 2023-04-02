@@ -22,7 +22,7 @@
 	var offcanvasMenu = function() {
 
 		$('#page').prepend('<div id="fh5co-offcanvas" />');
-		$('#page').prepend('<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle fh5co-nav-white"><i></i></a>');
+		//$('#page').prepend('<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle fh5co-nav-white"><i></i></a>');
 		var clone1 = $('.menu-1 > ul').clone();
 		$('#fh5co-offcanvas').append(clone1);
 		var clone2 = $('.menu-2 > ul').clone();
@@ -245,9 +245,26 @@ $('.question1').val(q1);
 $('.question2').val(q2);
 $('.question3').val(q3);
 $('.question4').val(q4);
-$('.question51').val(q51);
-$('.question52').val(q52);
+$('.question5-1').val(q51);
+$('.question5-2').val(q52);
 
+
+var first_answer= localStorage.getItem('first_answer');
+var last_answer= localStorage.getItem('last_answer');
+    
+if(first_answer=='1'){
+    //色ボタン表示
+    $('.no_show_pop').addClass('hide');
+    $('.show_pop').removeClass('hide');
+    
+}
+
+
+if(last_answer=='1'){
+
+
+}
+    
 
 //謎回答
 
@@ -270,6 +287,13 @@ $('.question52').val(q52);
     localStorage.setItem('q4', q4);
     localStorage.setItem('q51', q51);
     localStorage.setItem('q52', q52);
+    
+    var first_answer= localStorage.getItem('first_answer');
+    var last_answer= localStorage.getItem('last_answer');
+    
+  
+    
+    
 
 
     
@@ -343,17 +367,25 @@ $('.question52').val(q52);
     
     
     if(answersuccess1){
-    alert("正解です！");
-    localStorage.setItem('first_answer', 1);
-    var url ='images/answerd.jpg';
-    $('#qimage').attr('src', url);
-    $('.modal_pop_image').fadeIn();
+    	alert("正解！色が選べるように！");
+    	localStorage.setItem('first_answer', 1);
+    	var url ='images/answerd.jpg';
+    	$('#qimage').attr('src', url);
+    	$('.modal_pop_image').fadeIn();
+   	    //色ボタン表示
+	    $('.no_show_pop').addClass('hide');
+    	$('.show_pop').removeClass('hide');
+
+    }else if(answersuccess2&&first_answer!='1'){
+   		 alert("むむむ、正しい順番で答えよ");
     }else if(answersuccess2){
-    alert("素晴らしい！！");
-    localStorage.setItem('last_answer', 2);
-    var url ='images/answerf.jpg';
-    $('#qimage').attr('src', url);
-    $('.modal_pop_image').fadeIn();        
+   		 alert("素晴らしい！！");
+   		 localStorage.setItem('last_answer', 1);
+   		 var url ='images/answerf.jpg';
+   		 $('#qimage').attr('src', url);
+   		 $('.modal_pop_image').fadeIn(); 
+   		 //時計を動くようにする
+   		 $('.icon-clock').addClass('move-clock');       
     }else if(answernone){
     alert("全ての答えを入力してください");        
     }else if(answerfailed){
@@ -453,6 +485,10 @@ function getgoogle(type){
 
 */
 
+function noscroll(e){
+    e.preventDefault();
+}
+
 (function(){
 
     //要素の取得
@@ -505,6 +541,9 @@ function getgoogle(type){
 
         //フリックしたときに画面を動かさないようにデフォルト動作を抑制
         e.preventDefault();
+        
+        document.addEventListener('touchmove', noscroll, {passive: false});
+	    document.addEventListener('wheel', noscroll, {passive: false});
 
         //マウスが動いた場所に要素を動かす
         drag.style.top = event.pageY - y + "px";
@@ -529,6 +568,9 @@ function getgoogle(type){
 		
 		
         var drag = document.getElementsByClassName("drag")[0];
+        
+        document.removeEventListener('touchmove', noscroll);
+	    document.removeEventListener('wheel', noscroll);
 
         //ムーブベントハンドラの消去
         document.body.removeEventListener("mousemove", mmove, false);
@@ -538,6 +580,31 @@ function getgoogle(type){
 
         //クラス名 .drag も消す
         drag.classList.remove("drag");
+        
+        var clientRect1 = document.getElementById('move-clock1').getBoundingClientRect() ;
+        var x1 = clientRect1.left + window.pageXOffset;
+        var y1 = clientRect1.top+window.pageYOffset; ;
+        
+        var clientRect2 = document.getElementById('move-clock2').getBoundingClientRect() ;
+        var x2 = clientRect2.left + window.pageXOffset;
+        var y2 = clientRect2.top+window.pageYOffset; ;
+        
+        console.log('1：'+x1+'  '+y1);
+        console.log('2：'+x2+'  '+y2);
+        
+        var x12 = Math.abs(x1-x2);        
+        var y12 = Math.abs(y1-y2);
+        
+        console.log('x：'+x12+',y：'+y12);
+        
+        if(x12<30&&y12<30){
+           alert("お見事！！輝くボタンを押そう！");
+           //赤ボタンの点滅
+   		 $('.red').addClass('custom-blink');  
+        }
+        
+        
+      
     }
 
 })()

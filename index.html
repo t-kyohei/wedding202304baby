@@ -78,26 +78,13 @@
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
+	<nav class="fh5co-nav" role="">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
 					<div id="fh5co-logo"><a href="index.html">Wedding<strong>.</strong></a></div>
 				</div>
-				<div class="col-xs-10 text-right menu-1">
-					<ul>
-						<li class="active"><a href="index.html">TOP</a></li>
-						<li><a href="index.html#baby">赤ちゃん回答</a></li>
-						<li><a href="#fh5co-couple">謎解き解答欄</a></li>
-						<li><a href="services.html">謎解き問題</a></li>
-						<li><a href="services.html">２問目</a></li>
-						<li><a href="services.html">３問目</a></li>
-						<li><a href="services.html">４問目</a></li>
-						<li><a href="services.html">５問目</a></li>
-
-						<li><a href="services.html">解答</a></li>
-					</ul>
-				</div>
+				
 			</div>
 			
 		</div>
@@ -125,10 +112,10 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<h2 id="baby">赤ちゃん顔当て!</h2>
-					<h3>謎を解ければ色を選択できるようになります</h3>
+					<h3>謎が解ければ 正解の色がわかるかも</h3>
 					<p>新郎新婦が再入場するまでに解答をしてください</p>
 					<p>答えが分かってもあまり大声で言わないようお願いします</p>
-					<p>選べるのは1回きりです</p>
+					<p>色を選べるのは1回きりです</p>
 				</div>
 			</div>
 			<div class="couple-wrap animate-box" style="text-align: center">
@@ -146,7 +133,7 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block show_pop red" style="color: #FFFFFF;">赤を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop red hide" style="color: #FFFFFF;">赤を選ぶ</button>
 							<button type="submit" class="btn btn-default btn-block disabled no_show_pop" style="background: #C0C0C0;border: 5px solid #FF0000;color: #FFFFFF;">赤を選ぶ</button>
 					</div>
 					
@@ -162,7 +149,7 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block show_pop blue" style="background: #0000FF;color: #FFFFFF;">青を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop blue hide" style="background: #0000FF;color: #FFFFFF;">青を選ぶ</button>
 							<button type="submit" class="btn btn-default btn-block disabled no_show_pop" style="background: #C0C0C0;border: 5px solid #0000FF;color: #FFFFFF;">青を選ぶ</button>
 					</div>
 					
@@ -178,7 +165,7 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block show_pop green" style="background: #00FF00;color: #FFFFFF;">緑を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop green hide" style="background: #00FF00;color: #FFFFFF;">緑を選ぶ</button>
 							<button type="submit" class="btn btn-default btn-block disabled no_show_pop" style="background: #C0C0C0;border: 5px solid #00FF00;color: #FFFFFF;">緑を選ぶ</button>
 					</div>
 					
@@ -194,7 +181,7 @@
 					</div>
 					</div>
 					<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block show_pop yellow" style="background: #FFFF00;">黄を選ぶ</button>
+							<button type="submit" class="btn btn-default btn-block show_pop yellow hide" style="background: #FFFF00;">黄を選ぶ</button>
 							<button type="submit" class="btn btn-default btn-block disabled no_show_pop" style="background: #C0C0C0;border: 5px solid #FFFF00;color: #FFFFFF;">黄を選ぶ</button>
 					</div>
 					
@@ -219,12 +206,12 @@
 							<div class="col-md-6 col-sm-6 text-center">
 								<div class="event-wrap animate-box">
 									<h3>プロローグ</h3>
-									<div class="event-col" id="move-clock1">
+									<div class="event-col">
 										
-										<i class="icon-clock move-clock" style="font-size: 40px;" ></i>
+										<i class="icon-clock move-clock" style="font-size: 40px;" id="move-clock1"></i>
 										<i class="icon-circle" style="font-size: 40px;"></i>
 										
-										<span class="">4:00 PM</span>
+										<span class="">夜</span>
 									</div>
 									<div class="event-col">
 										<i class="icon-calendar " style="font-size: 40px;"></i>
@@ -237,9 +224,9 @@
 								<div class="event-wrap animate-box">
 									<h3>謎を解いて正解の色を入手せよ</h3>
 									<p>制限時間</p>
-									<div class="event-col" id="move-clock2">
+									<div class="event-col" >
 										
-										<i class="icon-clock move-clock" style="font-size: 40px;" ></i>
+										<i class="icon-clock move-clock" style="font-size: 40px;" id="move-clock2"></i>
 										<i class="icon-circle" style="font-size: 40px;"></i>
 										
 										<span>新郎新婦の<br>再入場まで</span>
@@ -353,15 +340,15 @@
 		<div class="container">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>解答</h2>
+					<h2>解説</h2>
 				</div>
 			</div>
 			<div class="row animate-box">
 				<div class="col-md-10 col-md-offset-1">
 					<form class="form-inline">
-						<p style="color: #FFFFFF;">制限時間が過ぎるたらこちらから解答を見ることができます</p>
+						<p style="color: #FFFFFF;">制限時間が過ぎるたらこちらから解説を見ることができます</p>
 						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">解答をみる</button>
+							<button type="submit" class="btn btn-default btn-block">解説をみる</button>
 						</div>
 					
 					
@@ -541,10 +528,16 @@
  $('.modal_pop_image').hide();
  
 //ローカルストレージ初期登録
- localStorage.setItem('answer', '');
- localStorage.setItem('first_answer', '');
- localStorage.setItem('last_answer', '');
- 
+
+ if(!localStorage.getItem('answer')!=''){
+	 localStorage.setItem('answer', '');
+ }
+ if(!localStorage.getItem('first_answer')!=''){
+ 	localStorage.setItem('first_answer', '');
+ }
+ if(!localStorage.getItem('last_answer')!=''){
+	 localStorage.setItem('last_answer', '');
+ }
  
  $('.show_image').on('click',function(){
     var value = $(this).data('value');
@@ -571,7 +564,7 @@
     // 「OK」をクリックした際の処理を記述
  
  	if ($(this).hasClass('red')) {
-    	$('.js-modal-close').addClass('red');
+    	$('.js-modal-close').addClass('bg_red');
     	localStorage.setItem('answer', 'red');
   	}else if($(this).hasClass('blue')) {
     	$('.js-modal-close').addClass('bg_blue');
@@ -611,6 +604,32 @@
 }
      
  })
+
+
+
+$('.show_answer').on('click',function(){
+ 	 const endpoint ="https://script.google.com/macros/s/AKfycbzD7HUiRp-ULYGhMVE6Z5RLXiYqVoEGfsDvTz7naDC0pb3BDwStmz5CVVHtYTiVqqnUpQ/exec";
+        "★WebAPIのURL★";
+        fetch(endpoint)
+		.then(function (fetch_data) {
+  		return fetch_data.json();
+		})
+		.then(function (json) {
+    		if(json[0].timeup==0){
+				$('.modal_pop_before').fadeOut();
+    		     $('.modal_pop').fadeIn();
+    		}else{
+    		   $('.modal_pop_before').fadeOut();
+    		   alert("制限時間を過ぎております");
+    			
+    		}
+		});
+
+})
+
+
+
+
  
  //$('.js-modal-close').on('click',function(){
  //    $('.modal_pop').fadeOut();
