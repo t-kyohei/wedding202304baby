@@ -261,8 +261,8 @@ if(first_answer=='1'){
 
 
 if(last_answer=='1'){
-
-
+  	    $('.move-clock-no').addClass('hide');
+    	$('.move-clock-js').removeClass('hide');
 }
     
 
@@ -385,7 +385,9 @@ if(last_answer=='1'){
    		 $('#qimage').attr('src', url);
    		 $('.modal_pop_image').fadeIn(); 
    		 //時計を動くようにする
-   		 $('.icon-clock').addClass('move-clock');       
+	    $('.move-clock-no').addClass('hide');
+    	$('.move-clock-js').removeClass('hide');
+
     }else if(answernone){
     alert("全ての答えを入力してください");        
     }else if(answerfailed){
@@ -492,7 +494,7 @@ function noscroll(e){
 (function(){
 
     //要素の取得
-    var elements = document.getElementsByClassName("move-clock");
+    var elements = document.getElementsByClassName("move-clock-js");
 
     //要素内のクリックされた位置を取得するグローバル（のような）変数
     var x;

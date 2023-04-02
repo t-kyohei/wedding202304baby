@@ -208,7 +208,8 @@
 									<h3>プロローグ</h3>
 									<div class="event-col">
 										
-										<i class="icon-clock move-clock" style="font-size: 40px;" id="move-clock1"></i>
+										<i class="icon-clock move-clock move-clock-no" style="font-size: 40px;" id=""></i>
+										<i class="icon-clock move-clock move-clock-js hide" style="font-size: 40px;" id="move-clock1"></i>
 										<i class="icon-circle" style="font-size: 40px;"></i>
 										
 										<span class="">夜</span>
@@ -226,7 +227,8 @@
 									<p>制限時間</p>
 									<div class="event-col" >
 										
-										<i class="icon-clock move-clock" style="font-size: 40px;" id="move-clock2"></i>
+										<i class="icon-clock move-clock move-clock-no" style="font-size: 40px;" id=""></i>
+										<i class="icon-clock move-clock move-clock-js hide" style="font-size: 40px;" id="move-clock2"></i>
 										<i class="icon-circle" style="font-size: 40px;"></i>
 										
 										<span>新郎新婦の<br>再入場まで</span>
@@ -576,6 +578,10 @@
     	$('.js-modal-close').addClass('bg_yellow');
     	localStorage.setItem('answer', 'yellow');    	
   	}
+
+ 	if ($(this).hasClass('custom-blink')) {
+    	$('.js-modal-close').addClass('custom-blink');	
+ 	}
 
     $('.modal_pop_before').fadeIn();
   	
