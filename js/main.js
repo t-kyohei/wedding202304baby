@@ -264,6 +264,8 @@ if(last_answer=='1'){
   	    $('.move-clock-no').addClass('hide');
     	$('.move-clock-js').removeClass('hide');
 }
+  	    $('.move-clock-no').addClass('hide');
+    	$('.move-clock-js').removeClass('hide');
     
 
 //謎回答
