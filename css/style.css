@@ -37,10 +37,16 @@ p{
 
 }
 
-.move-clock {
+.move-clock-no {
     cursor: move;
     position: absolute;
     z-index: 1000;
+}
+
+.move-clock-js{
+    cursor: move;
+    position: absolute;
+    z-index: 1001;
 }
 
 .drag {
