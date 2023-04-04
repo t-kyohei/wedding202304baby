@@ -267,7 +267,7 @@ if(last_answer=='1'){
     	$('.move-clock-js').removeClass('hide');
     
 
- 	    $('.move-clock-no').remove();
+// 	    $('.move-clock-no').remove();
  
 //謎回答
 
