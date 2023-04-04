@@ -268,7 +268,8 @@ if(last_answer=='1'){
     
 
 // 	    $('.move-clock-no').remove();
- 
+  		$('.move-clock-no').addClass('hide');
+    
 //謎回答
 
  $('.btn-answer').on('click',function(){
