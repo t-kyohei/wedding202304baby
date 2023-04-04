@@ -268,7 +268,6 @@ if(last_answer=='1'){
     
 
 // 	    $('.move-clock-no').remove();
-  		$('.move-clock-no').addClass('hide');
     
 //謎回答
 
@@ -534,6 +533,7 @@ function noscroll(e){
 
     //マウスカーソルが動いたときに発火
     function mmove(e) {
+  		$('.move-clock-no').addClass('hide');
 
         //ドラッグしている要素を取得
         var drag = document.getElementsByClassName("drag")[0];
@@ -544,6 +544,7 @@ function noscroll(e){
         } else {
             var event = e.changedTouches[0];
         }
+        
 
         //フリックしたときに画面を動かさないようにデフォルト動作を抑制
         e.preventDefault();
