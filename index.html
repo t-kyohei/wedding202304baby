@@ -113,8 +113,10 @@
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<h2 id="baby">赤ちゃん顔当て!</h2>
 					<h3>謎が解ければ 正解の色がわかるかも</h3>
-					<p>新郎新婦が再入場するまでに解答をしてください</p>
-					<p>答えが分かってもあまり大声で言わないようお願いします</p>
+					<p>新郎新婦が再入場するまでに色を選択して解答をしてください</p>
+					<p>正解が分かっても制限時間を過ぎると解答ができなくなります</p>
+					<p>1回解答をしておけば時間過ぎても再度選択可能です</p>
+					<p>正解はあまり大声で言わないようお願いします</p>
 					<p>色を選べるのは1回きりです</p>
 				</div>
 			</div>
@@ -349,9 +351,9 @@
 					<form class="form-inline">
 						<p style="color: #FFFFFF;">制限時間が過ぎるたらこちらから解説を見ることができます</p>
 						<div class="col-md-4 col-sm-4">
-							<button type="submit" class="btn btn-default btn-block">解説をみる</button>
+							<button type="submit" class="btn btn-default btn-block show_answer">解説をみる</button>
 						</div>
-						<div>
+						<div class="hide answerlist">
 							<br><br>
 							<img src="pdf/Slide1.jpg" style="width:100%;text-align: center;">
 							<br><br>
@@ -615,6 +617,12 @@
     	$('.js-modal-close').addClass('custom-blink');	
  	}
 
+	if($(this).hasClass(answer)){
+		$('.modal_pop_before').fadeOut();
+        $('.modal_pop').fadeIn();
+	
+	}else{
+	
     $('.modal_pop_before').fadeIn();
   	
  	 const endpoint ="https://script.google.com/macros/s/AKfycbzD7HUiRp-ULYGhMVE6Z5RLXiYqVoEGfsDvTz7naDC0pb3BDwStmz5CVVHtYTiVqqnUpQ/exec";
@@ -629,10 +637,13 @@
     		     $('.modal_pop').fadeIn();
     		}else{
     		   $('.modal_pop_before').fadeOut();
+		       localStorage.setItem('answer', '');    	
     		   alert("制限時間を過ぎております");
     			
     		}
 		});
+		
+	}
   } else {
     //キャンセルした場合
     //何も起きない
@@ -646,6 +657,9 @@
 
 
 $('.show_answer').on('click',function(){
+
+	 $('.modal_pop_before').fadeIn();
+	
  	 const endpoint ="https://script.google.com/macros/s/AKfycbzD7HUiRp-ULYGhMVE6Z5RLXiYqVoEGfsDvTz7naDC0pb3BDwStmz5CVVHtYTiVqqnUpQ/exec";
         "★WebAPIのURL★";
         fetch(endpoint)
@@ -654,12 +668,11 @@ $('.show_answer').on('click',function(){
 		})
 		.then(function (json) {
     		if(json[0].timeup==0){
-				$('.modal_pop_before').fadeOut();
-    		     $('.modal_pop').fadeIn();
-    		}else{
     		   $('.modal_pop_before').fadeOut();
-    		   alert("制限時間を過ぎております");
-    			
+    		   alert("時間が過ぎるまで待ってください");
+    		}else{
+	   			$('.answerlist').removeClass('hide');
+	   			$('.modal_pop_before').fadeOut();
     		}
 		});
 
@@ -683,6 +696,8 @@ $('.show_answer').on('click',function(){
 // })
   $('.btn-close-image').on('click',function(){
      $('.modal_pop_image').fadeOut();
+     $('#qimage').attr('src', '');
+
  })
 
 
