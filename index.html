@@ -351,7 +351,7 @@
 					<form class="form-inline">
 						<p style="color: #FFFFFF;">制限時間が過ぎるたらこちらから解説を見ることができます</p>
 						<div class="col-md-4 col-sm-4">
-							<button type="" class="btn btn-default btn-block show_answer">解説をみる</button>
+							<button type="button" class="btn btn-default btn-block show_answer">解説をみる</button>
 						</div>
 						<div class="hide answerlist">
 							<br><br>
@@ -659,7 +659,8 @@
 $('.show_answer').on('click',function(){
 
 	 $('.modal_pop_before').fadeIn();
-	
+
+
  	 const endpoint ="https://script.google.com/macros/s/AKfycbzD7HUiRp-ULYGhMVE6Z5RLXiYqVoEGfsDvTz7naDC0pb3BDwStmz5CVVHtYTiVqqnUpQ/exec";
         "★WebAPIのURL★";
         fetch(endpoint)
@@ -669,7 +670,7 @@ $('.show_answer').on('click',function(){
 		.then(function (json) {
     		if(json[0].timeup==0){
     		   $('.modal_pop_before').fadeOut();
-    		   alert("時間が過ぎるまで待ってください");
+    		   alert("制限時間を過ぎるまで待ってください");
     		}else{
 	   			$('.answerlist').removeClass('hide');
 	   			$('.modal_pop_before').fadeOut();
