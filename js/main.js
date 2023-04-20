@@ -240,6 +240,7 @@ var q3 = localStorage.getItem('q3');
 var q4 = localStorage.getItem('q4');
 var q51 = localStorage.getItem('q51');
 var q52 = localStorage.getItem('q52');
+var q6 = localStorage.getItem('q6');
 
 $('.question1').val(q1);
 $('.question2').val(q2);
@@ -247,6 +248,7 @@ $('.question3').val(q3);
 $('.question4').val(q4);
 $('.question5-1').val(q51);
 $('.question5-2').val(q52);
+$('.question6').val(q6);
 
 
 var first_answer= localStorage.getItem('first_answer');
@@ -281,13 +283,15 @@ if(last_answer=='1'){
     var q4 = $('.question4').val();
     var q51 = $('.question5-1').val();
     var q52 = $('.question5-2').val();
-    
+    var q6 = $('.question6').val();
+ 
     localStorage.setItem('q1', q1);
     localStorage.setItem('q2', q2);
     localStorage.setItem('q3', q3);
     localStorage.setItem('q4', q4);
     localStorage.setItem('q51', q51);
     localStorage.setItem('q52', q52);
+    localStorage.setItem('q6', q6);
     
     var first_answer= localStorage.getItem('first_answer');
     var last_answer= localStorage.getItem('last_answer');
@@ -357,6 +361,19 @@ if(last_answer=='1'){
     if((q51=='スバコ'&&q52=='タカラバコ')||(q51=='タカラバコ'&&q52=='スバコ')){
 
     }else if(q51==''||q52==''){
+      answernone=true;
+      answersuccess1=false;
+      answersuccess2=false;
+    }else{
+      answerfailed=true;
+      answersuccess1=false;
+      answersuccess2=false;    
+    }
+    
+     //6問目
+    if(q6=='シマウマ'){
+      
+    }else if(q6==''){
       answernone=true;
       answersuccess1=false;
       answersuccess2=false;
