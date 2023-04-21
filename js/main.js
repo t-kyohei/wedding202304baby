@@ -385,7 +385,7 @@ if(last_answer=='1'){
     
     
     if(answersuccess1){
-    	alert("正解！色が選べるように！");
+    	alert("正解！色が選べるようになりました！");
     	localStorage.setItem('first_answer', 1);
     	var url ='images/answerd.jpg';
     	$('#qimage').attr('src', url);
@@ -395,7 +395,7 @@ if(last_answer=='1'){
     	$('.show_pop').removeClass('hide');
 
     }else if(answersuccess2&&first_answer!='1'){
-   		 alert("むむむ、正しい順番で答えよ");
+   		 alert("むむむ　正しい順番で答えてください");
     }else if(answersuccess2){
    		 alert("素晴らしい！！");
    		 localStorage.setItem('last_answer', 1);
@@ -409,7 +409,7 @@ if(last_answer=='1'){
     }else if(answernone){
     alert("全ての答えを入力してください");        
     }else if(answerfailed){
-    alert("間違っている解答があります");        
+    alert("間違っている解答があります　カタカナで正しく入力ください");        
     }
      
  })
